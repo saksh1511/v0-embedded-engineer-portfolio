@@ -10,9 +10,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Sakshi Sharma | Embedded Systems Engineer',
+  title: 'Sakshi Sharma | Embedded System Engineer',
   description:
-    'Embedded systems engineer with hands-on experience in microcontroller programming, embedded C, sensor interfacing, IoT systems, secure communication, and networking fundamentals.',
+    'Embedded system engineer with hands-on experience in microcontroller programming, embedded C, sensor interfacing, IoT systems, secure communication, and networking fundamentals.',
   icons: {
     icon: [
       {

@@ -40,7 +40,7 @@ const projects: Project[] = [
     techStack: [
       "Arduino Uno",
       "IoT Sensors",
-      "Embedded Systems",
+      "Embedded System",
       "AI/ML Concepts",
     ],
   },

@@ -10,10 +10,10 @@ interface Certification {
 }
 
 const certifications: Certification[] = [
-  { name: "Embedded Systems and Robotics IoT", issuer: "IIT Mandi" },
+  { name: "Embedded System and Robotics IoT", issuer: "IIT Mandi" },
   { name: "Microcontroller Embedded C Programming", issuer: "Udemy" },
   { name: "Computer Networking", issuer: "Centre of Professional Enhancement" },
-  { name: "Database Management Systems", issuer: "NPTEL" },
+  { name: "Database Management System", issuer: "NPTEL" },
   { name: "AI Tools & ChatGPT Workshop", issuer: "be10x" },
   { name: "Getting Started with AI on Jetson Nano", issuer: "NVIDIA" },
 ]

@@ -23,7 +23,7 @@ export function HeroSection() {
           <div className="h-36 w-36 overflow-hidden rounded-full border-2 border-border shadow-sm md:h-44 md:w-44">
             <Image
               src={photoSrc}
-              alt="Sakshi Sharma, Embedded Systems Engineer"
+              alt="Sakshi Sharma, Embedded System Engineer"
               width={176}
               height={176}
               className="h-full w-full object-cover"
@@ -53,7 +53,7 @@ export function HeroSection() {
             Sakshi Sharma
           </h1>
           <p className="mt-2 text-base font-medium text-primary">
-            Embedded Systems Engineer
+            Embedded System Engineer
           </p>
           <div className="mt-4 max-w-xl space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>
@@ -61,7 +61,7 @@ export function HeroSection() {
               Engineering student at Lovely Professional University, I am
               passionate about the intersection of hardware and software. My
               academic foundation is built on core ECE principles including
-              Embedded Systems, Analog Circuits, and Computer Networking.
+              Embedded System, Analog Circuits, and Computer Networking.
             </p>
             <p>
               I am proficient in C, C++, Java, Python, Embedded C, Assembly,
