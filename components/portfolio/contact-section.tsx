@@ -17,8 +17,8 @@ const contacts = [
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/sakshi-1415",
-    href: "https://github.com/sakshi-1415",
+    value: "github.com/saksh1511",
+    href: "https://github.com/saksh1511",
   },
   {
     icon: Linkedin,
