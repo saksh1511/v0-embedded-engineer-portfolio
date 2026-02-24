@@ -47,6 +47,18 @@ export function ExperienceSection() {
                   </li>
                 ))}
               </ul>
+
+              <div className="mt-5 rounded-md border border-border bg-secondary/50 p-4">
+                <h4 className="text-xs font-semibold tracking-wider text-foreground/70 uppercase">
+                  Key Project
+                </h4>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+                  Implemented Inter-VLAN Routing using Router-on-a-Stick to
+                  enable secure communication between multiple departmental
+                  networks over a single physical router interface (real-life
+                  use: enterprise and campus network segmentation).
+                </p>
+              </div>
             </div>
           </div>
         </div>

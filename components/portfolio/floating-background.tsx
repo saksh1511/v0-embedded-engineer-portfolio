@@ -148,7 +148,10 @@ export function FloatingBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       const isDark = themeRef.current === "dark"
-      const color = isDark ? "109, 179, 196" : "74, 124, 138"
+      // Light mode: darker steel-blue icons with higher opacity
+      // Dark mode: lighter soft cyan icons with reduced opacity
+      const color = isDark ? "140, 200, 215" : "60, 95, 115"
+      const opacityMultiplier = isDark ? 0.85 : 1.4
 
       for (const p of particles) {
         p.x += p.vx
@@ -161,9 +164,10 @@ export function FloatingBackground() {
         if (p.x < -p.size * 2) p.x = canvas.width + p.size
         if (p.x > canvas.width + p.size * 2) p.x = -p.size
 
+        const finalOpacity = p.opacity * opacityMultiplier
         ctx.save()
-        ctx.strokeStyle = `rgba(${color}, ${p.opacity})`
-        ctx.fillStyle = `rgba(${color}, ${p.opacity})`
+        ctx.strokeStyle = `rgba(${color}, ${finalOpacity})`
+        ctx.fillStyle = `rgba(${color}, ${finalOpacity})`
         ctx.lineWidth = 1
         ICONS[p.iconIdx](ctx, p.x, p.y, p.size)
         ctx.restore()

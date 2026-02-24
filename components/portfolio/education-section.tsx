@@ -4,24 +4,32 @@ import { GraduationCap } from "lucide-react"
 interface EducationItem {
   degree: string
   institution: string
+  location: string
   score: string
+  period: string
 }
 
 const education: EducationItem[] = [
   {
     degree: "Bachelor of Technology - Electronics and Communication Engineering",
     institution: "Lovely Professional University",
+    location: "Punjab, India",
     score: "CGPA: 7.77",
+    period: "Since August 2023",
   },
   {
     degree: "Intermediate",
-    institution: "Senior Secondary",
+    institution: "City Montessori School, Rajendra Nagar",
+    location: "Lucknow",
     score: "88.8%",
+    period: "July 2022",
   },
   {
     degree: "Matriculation",
-    institution: "Secondary Education",
+    institution: "City Montessori School, Rajendra Nagar",
+    location: "Lucknow",
     score: "92.4%",
+    period: "July 2020",
   },
 ]
 
@@ -43,18 +51,23 @@ export function EducationSection() {
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
                 <GraduationCap className="h-5 w-5" />
               </div>
-              <div className="flex flex-1 flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground">
-                    {item.degree}
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    {item.institution}
-                  </p>
+              <div className="flex flex-1 flex-col gap-1">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-semibold text-foreground">
+                      {item.degree}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {item.institution}, {item.location}
+                    </p>
+                  </div>
+                  <span className="mt-1 inline-block rounded-md bg-primary/10 px-3 py-1 text-xs font-semibold text-primary sm:mt-0 shrink-0">
+                    {item.score}
+                  </span>
                 </div>
-                <span className="mt-1 inline-block rounded-md bg-primary/10 px-3 py-1 text-xs font-semibold text-primary sm:mt-0">
-                  {item.score}
-                </span>
+                <p className="text-xs text-muted-foreground/70">
+                  {item.period}
+                </p>
               </div>
             </div>
           ))}
