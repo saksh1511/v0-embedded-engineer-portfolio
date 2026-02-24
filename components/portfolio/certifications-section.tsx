@@ -1,43 +1,51 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { SectionHeader } from "./section-header"
-import { Award, Eye, Upload, X, FileText } from "lucide-react"
+import { Award, Eye, X, FileText } from "lucide-react"
 
 interface Certification {
   name: string
   issuer: string
-  allowUpload?: boolean
+  file: string
+  type: "image" | "pdf"
 }
 
 const certifications: Certification[] = [
-  { name: "Embedded System and Robotics IoT", issuer: "IIT Mandi", allowUpload: true },
-  { name: "Microcontroller Embedded C Programming", issuer: "Udemy", allowUpload: true },
-  { name: "Computer Networking", issuer: "Centre of Professional Enhancement", allowUpload: true },
-  { name: "Database Management System", issuer: "NPTEL", allowUpload: true },
-  { name: "Getting Started with AI on Jetson Nano", issuer: "NVIDIA", allowUpload: true },
+  {
+    name: "Embedded System and Robotics IoT",
+    issuer: "IIT Mandi",
+    file: "/certificates/embedded-system-robotics-iot-iitmandi.jpg",
+    type: "image",
+  },
+  {
+    name: "Microcontroller Embedded C Programming",
+    issuer: "Udemy",
+    file: "/certificates/microcontroller-embedded-c-udemy.png",
+    type: "image",
+  },
+  {
+    name: "Computer Networking",
+    issuer: "Centre of Professional Enhancement",
+    file: "/certificates/computer-networking-cpe.pdf",
+    type: "pdf",
+  },
+  {
+    name: "Database Management System",
+    issuer: "NPTEL",
+    file: "/certificates/dbms-nptel.pdf",
+    type: "pdf",
+  },
+  {
+    name: "Getting Started with AI on Jetson Nano",
+    issuer: "NVIDIA",
+    file: "/certificates/ai-jetson-nano-nvidia.png",
+    type: "image",
+  },
 ]
 
-interface CertFile {
-  name: string
-  url: string
-  type: string
-}
-
 export function CertificationsSection() {
-  const [certFiles, setCertFiles] = useState<Record<string, CertFile>>({})
-  const [viewingCert, setViewingCert] = useState<CertFile | null>(null)
-  const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({})
-
-  const handleUpload = (certName: string, e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-    const url = URL.createObjectURL(file)
-    setCertFiles((prev) => ({
-      ...prev,
-      [certName]: { name: file.name, url, type: file.type },
-    }))
-  }
+  const [viewingCert, setViewingCert] = useState<Certification | null>(null)
 
   return (
     <>
@@ -64,36 +72,14 @@ export function CertificationsSection() {
                   </span>
                 </div>
 
-                {cert.allowUpload !== false && cert.allowUpload && (
-                  <div className="flex shrink-0 items-center gap-1.5">
-                    {certFiles[cert.name] ? (
-                      <button
-                        onClick={() => setViewingCert(certFiles[cert.name])}
-                        className="flex items-center gap-1.5 rounded-md border border-primary/30 bg-primary/5 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
-                      >
-                        <Eye className="h-3 w-3" />
-                        <span className="hidden sm:inline">View Certificate</span>
-                        <span className="sm:hidden">View</span>
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => fileInputRefs.current[cert.name]?.click()}
-                        className="flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
-                      >
-                        <Upload className="h-3 w-3" />
-                        <span className="hidden sm:inline">Attach</span>
-                      </button>
-                    )}
-                    <input
-                      ref={(el) => { fileInputRefs.current[cert.name] = el }}
-                      type="file"
-                      accept="image/*,.pdf"
-                      onChange={(e) => handleUpload(cert.name, e)}
-                      className="hidden"
-                      aria-label={`Upload certificate for ${cert.name}`}
-                    />
-                  </div>
-                )}
+                <button
+                  onClick={() => setViewingCert(cert)}
+                  className="flex shrink-0 items-center gap-1.5 rounded-md border border-primary/30 bg-primary/5 px-2.5 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+                >
+                  <Eye className="h-3 w-3" />
+                  <span className="hidden sm:inline">View Certificate</span>
+                  <span className="sm:hidden">View</span>
+                </button>
               </div>
             ))}
           </div>
@@ -117,7 +103,7 @@ export function CertificationsSection() {
               <div className="flex items-center gap-2 min-w-0">
                 <FileText className="h-4 w-4 shrink-0 text-primary" />
                 <span className="truncate text-sm font-medium text-foreground">
-                  {viewingCert.name}
+                  {viewingCert.name} — {viewingCert.issuer}
                 </span>
               </div>
               <button
@@ -128,17 +114,20 @@ export function CertificationsSection() {
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <div className="flex items-center justify-center p-4" style={{ maxHeight: "80vh" }}>
-              {viewingCert.type === "application/pdf" ? (
+            <div
+              className="flex items-center justify-center p-4"
+              style={{ maxHeight: "80vh" }}
+            >
+              {viewingCert.type === "pdf" ? (
                 <iframe
-                  src={viewingCert.url}
-                  title="Certificate PDF"
+                  src={viewingCert.file}
+                  title={`${viewingCert.name} certificate`}
                   className="h-[70vh] w-full rounded-md border-0"
                 />
               ) : (
                 <img
-                  src={viewingCert.url}
-                  alt="Certificate"
+                  src={viewingCert.file}
+                  alt={`${viewingCert.name} certificate from ${viewingCert.issuer}`}
                   className="max-h-[70vh] w-auto rounded-md object-contain"
                 />
               )}
