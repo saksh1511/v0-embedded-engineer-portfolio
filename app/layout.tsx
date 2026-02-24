@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from 'next'
-import { JetBrains_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const jetbrainsMono = JetBrains_Mono({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-mono',
+  variable: '--font-sans',
 })
 
 export const metadata: Metadata = {
   title: 'Sakshi Sharma | Embedded Systems Engineer',
   description:
-    'Embedded systems engineer with hands-on experience in microcontroller programming, embedded C, sensor interfacing, IoT systems, and networking fundamentals.',
+    'Embedded systems engineer with hands-on experience in microcontroller programming, embedded C, sensor interfacing, IoT systems, secure communication, and networking fundamentals.',
   icons: {
     icon: [
       {
@@ -32,7 +33,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0a0e14',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8f9fb' },
+    { media: '(prefers-color-scheme: dark)', color: '#111827' },
+  ],
 }
 
 export default function RootLayout({
@@ -41,9 +45,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${jetbrainsMono.variable} font-mono antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

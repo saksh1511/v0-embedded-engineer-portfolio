@@ -1,4 +1,5 @@
-import { SectionHeader } from "./technical-profile"
+import { SectionHeader } from "./section-header"
+import { GraduationCap } from "lucide-react"
 
 interface EducationItem {
   degree: string
@@ -8,17 +9,17 @@ interface EducationItem {
 
 const education: EducationItem[] = [
   {
-    degree: "B.Tech - Electronics and Communication Engineering",
+    degree: "Bachelor of Technology - Electronics and Communication Engineering",
     institution: "Lovely Professional University",
     score: "CGPA: 7.77",
   },
   {
-    degree: "Intermediate (12th)",
+    degree: "Intermediate",
     institution: "Senior Secondary",
     score: "88.8%",
   },
   {
-    degree: "Matriculation (10th)",
+    degree: "Matriculation",
     institution: "Secondary Education",
     score: "92.4%",
   },
@@ -26,27 +27,35 @@ const education: EducationItem[] = [
 
 export function EducationSection() {
   return (
-    <section className="pcb-trace px-6 pt-16 pb-12">
-      <div className="mx-auto max-w-4xl">
-        <SectionHeader label="05" title="EDUCATION_LOG" />
+    <section className="px-6 py-12">
+      <div className="mx-auto max-w-3xl">
+        <SectionHeader
+          title="Education"
+          subtitle="Academic background"
+        />
 
-        <div className="mt-8 flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           {education.map((item) => (
             <div
               key={item.degree}
-              className="card-glow flex flex-col gap-1 border border-border bg-card p-5 md:flex-row md:items-center md:justify-between"
+              className="flex items-start gap-4 rounded-lg border border-border bg-card p-5"
             >
-              <div>
-                <h3 className="text-sm font-semibold text-foreground">
-                  {item.degree}
-                </h3>
-                <p className="mt-0.5 text-xs text-muted-foreground">
-                  {item.institution}
-                </p>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <GraduationCap className="h-5 w-5" />
               </div>
-              <span className="mt-2 inline-block border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary md:mt-0">
-                {item.score}
-              </span>
+              <div className="flex flex-1 flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground">
+                    {item.degree}
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    {item.institution}
+                  </p>
+                </div>
+                <span className="mt-1 inline-block rounded-md bg-primary/10 px-3 py-1 text-xs font-semibold text-primary sm:mt-0">
+                  {item.score}
+                </span>
+              </div>
             </div>
           ))}
         </div>

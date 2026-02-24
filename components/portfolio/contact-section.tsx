@@ -1,5 +1,5 @@
+import { SectionHeader } from "./section-header"
 import { Github, Linkedin, Mail } from "lucide-react"
-import { SectionHeader } from "./technical-profile"
 
 const contacts = [
   {
@@ -24,11 +24,14 @@ const contacts = [
 
 export function ContactSection() {
   return (
-    <section id="contact" className="pcb-trace px-6 pt-16 pb-12">
-      <div className="mx-auto max-w-4xl">
-        <SectionHeader label="07" title="CONTACT" />
+    <section id="contact" className="px-6 py-12">
+      <div className="mx-auto max-w-3xl">
+        <SectionHeader
+          title="Contact"
+          subtitle="Get in touch"
+        />
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-3">
           {contacts.map((item) => {
             const Icon = item.icon
             return (
@@ -37,14 +40,14 @@ export function ContactSection() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-glow flex items-center gap-4 border border-border bg-card p-5 transition-colors hover:border-primary/40"
+                className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-4 transition-colors hover:border-primary/40 hover:bg-secondary"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-accent/30 bg-accent/5">
-                  <Icon className="h-5 w-5 text-accent" />
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <Icon className="h-4 w-4" />
                 </div>
                 <div className="min-w-0">
                   <p className="text-xs text-muted-foreground">{item.label}</p>
-                  <p className="truncate text-sm text-foreground">
+                  <p className="truncate text-sm font-medium text-foreground">
                     {item.value}
                   </p>
                 </div>
