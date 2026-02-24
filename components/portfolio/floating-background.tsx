@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { useTheme } from "next-themes"
 
+// ---------- Icon drawing functions ----------
 const ICONS = [
   // Microchip
   (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
@@ -45,7 +46,7 @@ const ICONS = [
     ctx.arc(x, y, s / 2, 0, Math.PI * 2)
     ctx.stroke()
     ctx.beginPath()
-    ctx.arc(x, y, s * 0.1, 0, Math.PI * 2)
+    ctx.arc(x, y, s * 0.12, 0, Math.PI * 2)
     ctx.fill()
   },
   // Network node
@@ -95,8 +96,26 @@ const ICONS = [
       ctx.stroke()
     }
   },
+  // Resistor zig-zag
+  (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
+    const hw = s * 0.5
+    ctx.beginPath()
+    ctx.moveTo(x - hw, y)
+    ctx.lineTo(x - hw * 0.6, y)
+    const steps = 4
+    const segW = (hw * 1.2) / steps
+    for (let i = 0; i < steps; i++) {
+      const sx = x - hw * 0.6 + i * segW
+      const dir = i % 2 === 0 ? -1 : 1
+      ctx.lineTo(sx + segW / 2, y + dir * s * 0.2)
+      ctx.lineTo(sx + segW, y)
+    }
+    ctx.lineTo(x + hw, y)
+    ctx.stroke()
+  },
 ]
 
+// ---------- Particle type ----------
 interface Particle {
   x: number
   y: number
@@ -104,7 +123,10 @@ interface Particle {
   vy: number
   iconIdx: number
   size: number
-  opacity: number
+  baseOpacity: number
+  // Each particle also gets a slight rotation for visual variety
+  rotation: number
+  rotationSpeed: number
 }
 
 export function FloatingBackground() {
@@ -133,30 +155,42 @@ export function FloatingBackground() {
 
     const initParticles = () => {
       const area = canvas.width * canvas.height
-      const count = Math.max(15, Math.min(Math.floor(area / 35000), 50))
+      // Slightly more particles for richer feel
+      const count = Math.max(20, Math.min(Math.floor(area / 28000), 60))
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.6) * 0.12,
-        vy: 0.2 + Math.random() * 0.35,
+        // Slight diagonal drift (left-leaning) + downward
+        vx: -0.08 + Math.random() * -0.12,
+        vy: 0.18 + Math.random() * 0.32,
         iconIdx: Math.floor(Math.random() * ICONS.length),
-        size: 14 + Math.random() * 12,
-        opacity: 0.06 + Math.random() * 0.08,
+        // Varied sizes for depth: 16px to 32px
+        size: 16 + Math.random() * 16,
+        // Higher base opacity range so the multiplier can make them clearly visible
+        baseOpacity: 0.12 + Math.random() * 0.1,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.003,
       }))
     }
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       const isDark = themeRef.current === "dark"
-      // Light mode: darker steel-blue icons with higher opacity
-      // Dark mode: lighter soft cyan icons with reduced opacity
-      const color = isDark ? "140, 200, 215" : "60, 95, 115"
-      const opacityMultiplier = isDark ? 0.85 : 1.4
+
+      // LIGHT MODE: dark graphite/steel-blue with high contrast
+      // DARK MODE: soft muted cyan with gentler presence
+      const color = isDark ? "140, 195, 210" : "55, 85, 105"
+      // Light mode gets a BIG opacity boost so icons are clearly visible
+      // Dark mode stays subtle
+      const opacityMultiplier = isDark ? 1.0 : 2.5
+      const lineW = isDark ? 1.2 : 1.8
 
       for (const p of particles) {
         p.x += p.vx
         p.y += p.vy
+        p.rotation += p.rotationSpeed
 
+        // Wrap around edges
         if (p.y > canvas.height + p.size * 2) {
           p.y = -p.size * 2
           p.x = Math.random() * canvas.width
@@ -164,12 +198,25 @@ export function FloatingBackground() {
         if (p.x < -p.size * 2) p.x = canvas.width + p.size
         if (p.x > canvas.width + p.size * 2) p.x = -p.size
 
-        const finalOpacity = p.opacity * opacityMultiplier
+        const finalOpacity = Math.min(p.baseOpacity * opacityMultiplier, 0.45)
+
         ctx.save()
+        ctx.translate(p.x, p.y)
+        ctx.rotate(p.rotation)
+
+        // LIGHT MODE ONLY: add a subtle soft shadow behind each icon
+        // This separates the icons from the white background
+        if (!isDark) {
+          ctx.shadowColor = "rgba(55, 85, 105, 0.15)"
+          ctx.shadowBlur = 6
+          ctx.shadowOffsetX = 1
+          ctx.shadowOffsetY = 2
+        }
+
         ctx.strokeStyle = `rgba(${color}, ${finalOpacity})`
         ctx.fillStyle = `rgba(${color}, ${finalOpacity})`
-        ctx.lineWidth = 1
-        ICONS[p.iconIdx](ctx, p.x, p.y, p.size)
+        ctx.lineWidth = lineW
+        ICONS[p.iconIdx](ctx, 0, 0, p.size)
         ctx.restore()
       }
 
@@ -187,9 +234,16 @@ export function FloatingBackground() {
 
     window.addEventListener("resize", handleResize)
 
+    // Re-init when page height changes (e.g. accordion expansion)
+    const observer = new ResizeObserver(() => {
+      canvas.height = document.documentElement.scrollHeight
+    })
+    observer.observe(document.documentElement)
+
     return () => {
       cancelAnimationFrame(animationId)
       window.removeEventListener("resize", handleResize)
+      observer.disconnect()
     }
   }, [])
 
