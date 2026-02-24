@@ -12,13 +12,13 @@ const achievements = [
     icon: Star,
     title: "Letter of Appreciation - Defence Minister of India",
     description:
-      "Received a letter of appreciation from the Defence Minister of India for academic excellence.",
+      "Received a letter of appreciation from the Defence Minister of India.",
   },
 ]
 
 export function AchievementsSection() {
   return (
-    <section className="px-6 py-12">
+    <section id="achievements" className="scroll-mt-16 px-6 py-12">
       <div className="mx-auto max-w-3xl">
         <SectionHeader
           title="Achievements"

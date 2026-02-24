@@ -10,10 +10,22 @@ const ICONS = [
     const pinLen = s * 0.3
     for (let i = 0; i < 3; i++) {
       const offset = (i - 1) * (s * 0.3)
-      ctx.beginPath(); ctx.moveTo(x + offset, y - s / 2); ctx.lineTo(x + offset, y - s / 2 - pinLen); ctx.stroke()
-      ctx.beginPath(); ctx.moveTo(x + offset, y + s / 2); ctx.lineTo(x + offset, y + s / 2 + pinLen); ctx.stroke()
-      ctx.beginPath(); ctx.moveTo(x - s / 2, y + offset); ctx.lineTo(x - s / 2 - pinLen, y + offset); ctx.stroke()
-      ctx.beginPath(); ctx.moveTo(x + s / 2, y + offset); ctx.lineTo(x + s / 2 + pinLen, y + offset); ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x + offset, y - s / 2)
+      ctx.lineTo(x + offset, y - s / 2 - pinLen)
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x + offset, y + s / 2)
+      ctx.lineTo(x + offset, y + s / 2 + pinLen)
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x - s / 2, y + offset)
+      ctx.lineTo(x - s / 2 - pinLen, y + offset)
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(x + s / 2, y + offset)
+      ctx.lineTo(x + s / 2 + pinLen, y + offset)
+      ctx.stroke()
     }
   },
   // Signal wave
@@ -29,17 +41,54 @@ const ICONS = [
   },
   // Sensor / circle with dot
   (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-    ctx.beginPath(); ctx.arc(x, y, s / 2, 0, Math.PI * 2); ctx.stroke()
-    ctx.beginPath(); ctx.arc(x, y, s * 0.1, 0, Math.PI * 2); ctx.fill()
+    ctx.beginPath()
+    ctx.arc(x, y, s / 2, 0, Math.PI * 2)
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.arc(x, y, s * 0.1, 0, Math.PI * 2)
+    ctx.fill()
   },
-  // PCB trace node
+  // Network node
   (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-    ctx.beginPath(); ctx.moveTo(x - s / 2, y); ctx.lineTo(x, y); ctx.lineTo(x, y - s / 2); ctx.stroke()
-    ctx.beginPath(); ctx.arc(x, y, s * 0.12, 0, Math.PI * 2); ctx.fill()
+    ctx.beginPath()
+    ctx.arc(x, y, s * 0.15, 0, Math.PI * 2)
+    ctx.fill()
+    const arms = 4
+    for (let i = 0; i < arms; i++) {
+      const angle = (i / arms) * Math.PI * 2
+      const ex = x + Math.cos(angle) * s * 0.5
+      const ey = y + Math.sin(angle) * s * 0.5
+      ctx.beginPath()
+      ctx.moveTo(x, y)
+      ctx.lineTo(ex, ey)
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.arc(ex, ey, s * 0.08, 0, Math.PI * 2)
+      ctx.fill()
+    }
+  },
+  // PCB trace
+  (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
+    ctx.beginPath()
+    ctx.moveTo(x - s / 2, y)
+    ctx.lineTo(x - s * 0.15, y)
+    ctx.lineTo(x, y - s * 0.35)
+    ctx.lineTo(x + s * 0.15, y)
+    ctx.lineTo(x + s / 2, y)
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.arc(x - s / 2, y, s * 0.06, 0, Math.PI * 2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(x + s / 2, y, s * 0.06, 0, Math.PI * 2)
+    ctx.fill()
   },
   // Antenna / wireless
   (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-    ctx.beginPath(); ctx.moveTo(x, y + s / 2); ctx.lineTo(x, y - s * 0.1); ctx.stroke()
+    ctx.beginPath()
+    ctx.moveTo(x, y + s / 2)
+    ctx.lineTo(x, y - s * 0.1)
+    ctx.stroke()
     for (let i = 1; i <= 3; i++) {
       ctx.beginPath()
       ctx.arc(x, y - s * 0.1, i * s * 0.15, -Math.PI * 0.8, -Math.PI * 0.2)
@@ -51,6 +100,7 @@ const ICONS = [
 interface Particle {
   x: number
   y: number
+  vx: number
   vy: number
   iconIdx: number
   size: number
@@ -60,6 +110,11 @@ interface Particle {
 export function FloatingBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { resolvedTheme } = useTheme()
+  const themeRef = useRef(resolvedTheme)
+
+  useEffect(() => {
+    themeRef.current = resolvedTheme
+  }, [resolvedTheme])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -73,36 +128,42 @@ export function FloatingBackground() {
 
     const resize = () => {
       canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      canvas.height = document.documentElement.scrollHeight
     }
 
     const initParticles = () => {
-      const count = Math.floor((window.innerWidth * window.innerHeight) / 50000)
-      particles = Array.from({ length: Math.min(count, 30) }, () => ({
+      const area = canvas.width * canvas.height
+      const count = Math.max(15, Math.min(Math.floor(area / 35000), 50))
+      particles = Array.from({ length: count }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vy: -(0.15 + Math.random() * 0.25),
+        vx: (Math.random() - 0.6) * 0.12,
+        vy: 0.2 + Math.random() * 0.35,
         iconIdx: Math.floor(Math.random() * ICONS.length),
-        size: 12 + Math.random() * 10,
-        opacity: 0.04 + Math.random() * 0.06,
+        size: 14 + Math.random() * 12,
+        opacity: 0.06 + Math.random() * 0.08,
       }))
     }
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      const isDark = resolvedTheme === "dark"
-      const color = isDark ? "rgba(109, 179, 196," : "rgba(74, 124, 138,"
+      const isDark = themeRef.current === "dark"
+      const color = isDark ? "109, 179, 196" : "74, 124, 138"
 
       for (const p of particles) {
+        p.x += p.vx
         p.y += p.vy
-        if (p.y < -p.size * 2) {
-          p.y = canvas.height + p.size * 2
+
+        if (p.y > canvas.height + p.size * 2) {
+          p.y = -p.size * 2
           p.x = Math.random() * canvas.width
         }
+        if (p.x < -p.size * 2) p.x = canvas.width + p.size
+        if (p.x > canvas.width + p.size * 2) p.x = -p.size
 
         ctx.save()
-        ctx.strokeStyle = `${color} ${p.opacity})`
-        ctx.fillStyle = `${color} ${p.opacity})`
+        ctx.strokeStyle = `rgba(${color}, ${p.opacity})`
+        ctx.fillStyle = `rgba(${color}, ${p.opacity})`
         ctx.lineWidth = 1
         ICONS[p.iconIdx](ctx, p.x, p.y, p.size)
         ctx.restore()
@@ -115,16 +176,18 @@ export function FloatingBackground() {
     initParticles()
     draw()
 
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       resize()
       initParticles()
-    })
+    }
+
+    window.addEventListener("resize", handleResize)
 
     return () => {
       cancelAnimationFrame(animationId)
-      window.removeEventListener("resize", resize)
+      window.removeEventListener("resize", handleResize)
     }
-  }, [resolvedTheme])
+  }, [])
 
   return (
     <canvas

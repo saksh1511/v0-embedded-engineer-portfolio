@@ -1,3 +1,4 @@
+import { NavHeader } from "@/components/portfolio/nav-header"
 import { HeroSection } from "@/components/portfolio/hero-section"
 import { ExperienceSection } from "@/components/portfolio/experience-section"
 import { ProjectsSection } from "@/components/portfolio/projects-section"
@@ -10,9 +11,10 @@ import { FloatingBackground } from "@/components/portfolio/floating-background"
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen scroll-smooth">
       <FloatingBackground />
       <div className="relative z-10">
+        <NavHeader />
         <main>
           <HeroSection />
           <ExperienceSection />

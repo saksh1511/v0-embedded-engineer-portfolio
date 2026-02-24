@@ -11,7 +11,7 @@ const responsibilities = [
 
 export function ExperienceSection() {
   return (
-    <section className="px-6 py-12">
+    <section id="internship" className="scroll-mt-16 px-6 py-12">
       <div className="mx-auto max-w-3xl">
         <SectionHeader
           title="Internship"

@@ -1,45 +1,52 @@
 import { SectionHeader } from "./section-header"
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Github, Linkedin, Mail, Phone } from "lucide-react"
 
 const contacts = [
   {
-    icon: Mail,
-    label: "Email",
-    value: "sakshi.sharma@email.com",
-    href: "mailto:sakshi.sharma@email.com",
+    icon: Phone,
+    label: "Phone",
+    value: "+91 6307973797",
+    href: "tel:+916307973797",
   },
   {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/sakshi-sharma",
-    href: "https://linkedin.com/in/sakshi-sharma",
+    icon: Mail,
+    label: "Email",
+    value: "shsaksh1415@gmail.com",
+    href: "mailto:shsaksh1415@gmail.com",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/sakshi-sharma",
-    href: "https://github.com/sakshi-sharma",
+    value: "github.com/sakshi-1415",
+    href: "https://github.com/sakshi-1415",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/sakshi-sharma-a88231234",
+    href: "https://www.linkedin.com/in/sakshi-sharma-a88231234",
   },
 ]
 
 export function ContactSection() {
   return (
-    <section id="contact" className="px-6 py-12">
+    <section id="contact" className="scroll-mt-16 px-6 py-12">
       <div className="mx-auto max-w-3xl">
-        <SectionHeader
-          title="Contact"
-          subtitle="Get in touch"
-        />
+        <SectionHeader title="Contact" subtitle="Get in touch" />
 
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2">
           {contacts.map((item) => {
             const Icon = item.icon
             return (
               <a
                 key={item.label}
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  item.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
                 className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-4 transition-colors hover:border-primary/40 hover:bg-secondary"
               >
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
