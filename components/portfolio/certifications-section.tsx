@@ -15,7 +15,6 @@ const certifications: Certification[] = [
   { name: "Microcontroller Embedded C Programming", issuer: "Udemy", allowUpload: true },
   { name: "Computer Networking", issuer: "Centre of Professional Enhancement", allowUpload: true },
   { name: "Database Management System", issuer: "NPTEL", allowUpload: true },
-  { name: "AI Tools & ChatGPT Workshop", issuer: "be10x" },
   { name: "Getting Started with AI on Jetson Nano", issuer: "NVIDIA", allowUpload: true },
 ]
 
