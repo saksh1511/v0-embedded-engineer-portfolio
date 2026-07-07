@@ -9,6 +9,36 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Multitask Dashboard using Free RTOS and STM32",
+    summary:
+      "Developed a Free RTOS-based multitasking system on STM32 NUCLEO-F446RE with LED, UART, Counter, and DHT22 sensor.",
+    highlights: [
+      "Implemented real-time temperature and humidity monitoring using DHT22 and transmitted live sensor data via UART",
+      "Demonstrated RTOS concepts with task scheduling, priority management, and concurrent execution of multiple tasks",
+    ],
+    techStack: ["STM32 NUCLEO-F446RE", "Free RTOS", "STM32CubeIDE", "UART", "PuTTY"],
+  },
+  {
+    title: "Smart Helmet with Accident Detection System",
+    summary:
+      "Designed an IoT-based smart helmet capable of detecting accidents using accelerometer and gyroscope sensors.",
+    highlights: [
+      "Integrated real-time GPS tracking and automated SMS alerts to emergency contacts using GSM module",
+      "Created an embedded system for rider safety monitoring, detection and emergency response mechanism",
+    ],
+    techStack: ["ESP32", "MPU6050", "GSM Module (SIM800L)", "GPS Module (NEO-6M)", "Buzzer"],
+  },
+  {
+    title: "Tourist Tracking and Rescuing System",
+    summary:
+      "Developed an IoT-based real-time tourist tracking in crowded and remote locations via wearable devices.",
+    highlights: [
+      "Implemented RFID checkpoints and location monitoring to identify missing individuals and support rescue operations",
+      "Deployed a centralized dashboard with automated alerts and status updates for faster emergency response",
+    ],
+    techStack: ["IoT Devices", "ESP32", "RFID", "Wireless Communication", "Real time monitoring"],
+  },
+  {
     title: "Lost and Found Tracking System (GPS + RFID + IoT)",
     summary:
       "IoT-based system for real-time location tracking of individuals in large or remote areas using GPS and RFID.",

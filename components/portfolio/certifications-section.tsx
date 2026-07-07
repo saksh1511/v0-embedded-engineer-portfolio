@@ -13,6 +13,30 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
+    name: "Programming in Java",
+    issuer: "NPTEL",
+    file: "/certificates/programming-java-nptel.png",
+    type: "image",
+  },
+  {
+    name: "NextGen Networking: Summer Internship in Advanced Computer Networks",
+    issuer: "Lovely Professional University - Centre for Professional Enhancement",
+    file: "/certificates/nextgen-networking-lpu.png",
+    type: "image",
+  },
+  {
+    name: "Database Management System",
+    issuer: "NPTEL",
+    file: "/certificates/dbms-nptel.png",
+    type: "image",
+  },
+  {
+    name: "Computer Networking",
+    issuer: "Centre of Professional Enhancement",
+    file: "/certificates/computer-networking-cpe.pdf",
+    type: "pdf",
+  },
+  {
     name: "Embedded System and Robotics IoT",
     issuer: "IIT Mandi",
     file: "/certificates/embedded-system-robotics-iot-iitmandi.jpg",
@@ -23,18 +47,6 @@ const certifications: Certification[] = [
     issuer: "Udemy",
     file: "/certificates/microcontroller-embedded-c-udemy.png",
     type: "image",
-  },
-  {
-    name: "Computer Networking",
-    issuer: "Centre of Professional Enhancement",
-    file: "/certificates/computer-networking-cpe.pdf",
-    type: "pdf",
-  },
-  {
-    name: "Database Management System",
-    issuer: "NPTEL",
-    file: "/certificates/dbms-nptel.pdf",
-    type: "pdf",
   },
   {
     name: "Getting Started with AI on Jetson Nano",
