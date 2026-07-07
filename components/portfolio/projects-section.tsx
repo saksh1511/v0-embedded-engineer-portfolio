@@ -38,6 +38,42 @@ const projects: Project[] = [
     ],
     techStack: ["IoT Devices", "ESP32", "RFID", "Wireless Communication", "Real time monitoring"],
   },
+  {
+    title: "Lost and Found Tracking System (GPS + RFID + IoT)",
+    summary:
+      "IoT-based system for real-time location tracking of individuals in large or remote areas using GPS and RFID.",
+    highlights: [
+      "Enabled real-time location tracking of individuals in large or remote areas",
+      "Achieved efficient monitoring and recovery using wearable devices and checkpoints",
+    ],
+    techStack: ["IoT Devices", "GPS", "RFID", "Wireless Communication"],
+  },
+  {
+    title: "Secure Chat Application Using TCP & AES Encryption",
+    summary:
+      "Java-based client-server application providing encrypted real-time messaging over TCP/IP.",
+    highlights: [
+      "Java-based client-server application using TCP/IP",
+      "AES encryption for secure and confidential communication",
+      "Tested under multiple network scenarios",
+    ],
+    techStack: ["Java", "TCP/IP", "AES Encryption", "Socket Programming"],
+  },
+  {
+    title: "AgriSense: Intelligent Crop Monitoring & Management Bot",
+    summary:
+      "IoT-enabled agribot for monitoring soil nutrients, moisture, and pest activity with smart alerts.",
+    highlights: [
+      "IoT-enabled agribot for monitoring soil nutrients, moisture, and pest activity",
+      "Smart alerts and precision irrigation using data-driven insights",
+    ],
+    techStack: [
+      "Arduino Uno",
+      "IoT Sensors",
+      "Embedded System",
+      "AI/ML Concepts",
+    ],
+  },
 ]
 
 export function ProjectsSection() {
