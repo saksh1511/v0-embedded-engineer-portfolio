@@ -8,7 +8,7 @@ export function HeroSection() {
         <div className="shrink-0">
           <div className="h-36 w-36 overflow-hidden rounded-full border-2 border-border shadow-sm md:h-44 md:w-44">
             <Image
-              src="/images/profile.jpg"
+              src="/images/sakshi-profile.png"
               alt="Sakshi Sharma, Embedded System Engineer"
               width={176}
               height={176}

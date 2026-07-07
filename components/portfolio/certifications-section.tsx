@@ -15,14 +15,20 @@ const certifications: Certification[] = [
   {
     name: "Programming in Java",
     issuer: "NPTEL",
-    file: "/certificates/programming-java-nptel.pdf",
-    type: "pdf",
+    file: "/certificates/programming-java-nptel.png",
+    type: "image",
+  },
+  {
+    name: "NextGen Networking: Summer Internship in Advanced Computer Networks",
+    issuer: "Lovely Professional University - Centre for Professional Enhancement",
+    file: "/certificates/nextgen-networking-lpu.png",
+    type: "image",
   },
   {
     name: "Database Management System",
     issuer: "NPTEL",
-    file: "/certificates/dbms-nptel.pdf",
-    type: "pdf",
+    file: "/certificates/dbms-nptel.png",
+    type: "image",
   },
   {
     name: "Computer Networking",
