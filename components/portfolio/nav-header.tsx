@@ -1,6 +1,7 @@
 "use client"
 
 import { ThemeToggle } from "./theme-toggle"
+import { CVViewerModal } from "./cv-viewer-modal"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 
@@ -18,6 +19,7 @@ const CV_URL = "/documents/SakshiSharmaCV.pdf"
 
 export function NavHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [cvOpen, setCvOpen] = useState(false)
 
   return (
     <nav className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur-md">
@@ -40,13 +42,12 @@ export function NavHeader() {
               {link.label}
             </a>
           ))}
-          <a
-            href={CV_URL}
-            download="SakshiSharmaCV.pdf"
+          <button
+            onClick={() => setCvOpen(true)}
             className="text-xs font-medium text-primary transition-colors hover:text-primary/80"
           >
             CV
-          </a>
+          </button>
           <ThemeToggle />
         </div>
 
@@ -81,17 +82,24 @@ export function NavHeader() {
                 {link.label}
               </a>
             ))}
-            <a
-              href={CV_URL}
-              download="SakshiSharmaCV.pdf"
-              onClick={() => setMobileOpen(false)}
+            <button
+              onClick={() => {
+                setCvOpen(true)
+                setMobileOpen(false)
+              }}
               className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
             >
               CV
-            </a>
+            </button>
           </div>
         </div>
       )}
+
+      <CVViewerModal
+        isOpen={cvOpen}
+        onClose={() => setCvOpen(false)}
+        cvUrl={CV_URL}
+      />
     </nav>
   )
 }
