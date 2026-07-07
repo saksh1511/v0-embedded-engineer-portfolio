@@ -11,9 +11,10 @@ const navLinks = [
   { label: "Certifications", href: "#certifications" },
   { label: "Achievements", href: "#achievements" },
   { label: "Education", href: "#education" },
-  { label: "CV", href: "#cv" },
   { label: "Contact", href: "#contact" },
 ]
+
+const CV_URL = "/documents/SakshiSharmaCV.pdf"
 
 export function NavHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -39,6 +40,13 @@ export function NavHeader() {
               {link.label}
             </a>
           ))}
+          <a
+            href={CV_URL}
+            download="SakshiSharmaCV.pdf"
+            className="text-xs font-medium text-primary transition-colors hover:text-primary/80"
+          >
+            CV
+          </a>
           <ThemeToggle />
         </div>
 
@@ -73,6 +81,14 @@ export function NavHeader() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={CV_URL}
+              download="SakshiSharmaCV.pdf"
+              onClick={() => setMobileOpen(false)}
+              className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
+            >
+              CV
+            </a>
           </div>
         </div>
       )}
