@@ -2,11 +2,9 @@ import { SectionHeader } from "./section-header"
 import { Briefcase } from "lucide-react"
 
 const responsibilities = [
-  "Routing and switching configuration",
-  "VLAN implementation and network segmentation",
-  "TCP/IP protocol understanding",
-  "OSPF, RIP, EIGRP routing protocols",
-  "Network simulation, testing, and troubleshooting",
+  "Configured, tested, and optimized next-generation networking solutions including routing and switching",
+  "Analyzed TCP/IP communication and network security concepts",
+  "Assisted in deploying network automation tools and monitoring systems for improved performance",
 ]
 
 export function ExperienceSection() {
@@ -50,14 +48,18 @@ export function ExperienceSection() {
 
               <div className="mt-5 rounded-md border border-border bg-secondary/50 p-4">
                 <h4 className="text-xs font-semibold tracking-wider text-foreground/70 uppercase">
-                  Key Project
+                  Tech Stack
                 </h4>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
-                  Implemented Inter-VLAN Routing using Router-on-a-Stick to
-                  enable secure communication between multiple departmental
-                  networks over a single physical router interface (real-life
-                  use: enterprise and campus network segmentation).
-                </p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {["Cisco Packet Tracer", "TCP/IP", "Routing & Switching", "VLANs"].map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-md border border-border bg-primary/10 px-2.5 py-1 text-xs text-primary"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
+  { label: "Skills", href: "#skills" },
   { label: "Internship", href: "#internship" },
   { label: "Projects", href: "#projects" },
   { label: "Certifications", href: "#certifications" },

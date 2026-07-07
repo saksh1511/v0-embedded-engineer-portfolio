@@ -1,0 +1,89 @@
+SAKSHI SHARMA
+Embedded System Engineer
+
+LinkedIn: sakshi-sharma-a88231234                                                                Email: shsaksh1415@gmail.com
+GitHub: github.com/saksh1511                                                                   Mobile: +91-6307973797
+
+
+SKILLS
+
+Languages: C++, C, Java, Micro Python, Embedded C
+
+Boards & Platforms: STM32, ESP32, Arduino, Proteus, STM32CubeIDE, MATLAB, Arduino IDE, Cisco Packet Tracer, VS Code
+
+Soft Skills: Problem-Solving, Leadership, Project Management, Adaptability, Critical Thinking
+
+
+INTERNSHIP
+
+Lovely Professional University	Jul'25
+Computer Networking Intern
+
+Configured, tested, and optimized next-generation networking solutions including routing, switching, and analyzed TCP/IP communication and network security concepts.
+Assisted in deploying network automation tools and monitoring systems for improved performance.
+
+Tech stacks: Cisco Packet Tracer • TCP/IP • Routing & Switching Protocols • VLANs
+
+
+PROJECTS
+
+Multitask Dashboard using Free RTOS and STM32	Jun'26
+
+Developed a Free RTOS-based multitasking system on STM32 NUCLEO-F446RE with LED, UART, Counter, and DHT22 sensor.
+Implemented real-time temperature and humidity monitoring using DHT22 and transmitted live sensor data via UART.
+Demonstrated RTOS concepts with task scheduling, priority management, and concurrent execution of multiple tasks.
+
+Tech Stack: STM32 NUCLEO-F446RE, Free RTOS, STM32CubeIDE, UART, PuTTY
+
+
+Smart Helmet with Accident Detection System	Feb'26
+
+Designed an IoT-based smart helmet capable of detecting accidents using accelerometer and gyroscope sensors.
+Integrated real-time GPS tracking and automated SMS alerts to emergency contacts using GSM module.
+Created an embedded system for rider safety monitoring, detection and emergency response mechanism.
+
+Tech Stack: ESP32, MPU6050, GSM Module (SIM800L), GPS Module (NEO-6M), Buzzer
+
+
+Tourist Tracking and Rescuing System	Sep'25
+
+Developed an IoT-based real-time tourist tracking in crowded and remote locations via wearable devices.
+Implemented RFID checkpoints, and location monitoring to identify missing individuals and support rescue operations.
+Deployed a centralized dashboard with automated alerts and status updates for faster emergency response.
+
+Tech Stack: IoT Devices, ESP32, RFID, Wireless Communication, Real time monitoring
+
+
+CERTIFICATES
+
+Programming in Java - (NPTEL)	Apr'26
+
+Database Management System - (NPTEL)	Aug'25
+
+Computer Networking - (Centre of Professional Enhancement)	Jul'25
+
+Embedded Systems and Robotics IoT – (IIT Mandi)	Mar'25
+
+
+ACHIEVEMENTS
+
+Secured National Rank 21	Aug'25
+Among 2,000+ participants in Java Quiz Competition
+
+Participated in Smart India Hackathon 2025	Aug'25
+Top 15 finalist team to qualify internal hackathon of SIH 2025
+
+Received letter of appreciation from Mr. Rajnath Singh (Defense Minister of India)	Aug'23
+For exceptional performance in ISC examinations.
+
+
+EDUCATION
+
+Lovely Professional University	Punjab, India
+Bachelor of Technology – Electronics and Communication Engineering; CGPA: 7.87	since Aug'23
+
+City Montessori School	Rajendra Nagar, Lucknow
+Intermediate; Percentage: 88.8	Jul'22
+
+City Montessori School	Rajendra Nagar, Lucknow
+Matriculation; Percentage: 92.4	Jul'20

@@ -14,7 +14,7 @@ const education: EducationItem[] = [
     degree: "Bachelor of Technology - Electronics and Communication Engineering",
     institution: "Lovely Professional University",
     location: "Punjab, India",
-    score: "CGPA: 7.77",
+    score: "CGPA: 7.87",
     period: "Since August 2023",
   },
   {

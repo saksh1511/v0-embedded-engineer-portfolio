@@ -1,5 +1,6 @@
 import { NavHeader } from "@/components/portfolio/nav-header"
 import { HeroSection } from "@/components/portfolio/hero-section"
+import { SkillsSection } from "@/components/portfolio/skills-section"
 import { ExperienceSection } from "@/components/portfolio/experience-section"
 import { ProjectsSection } from "@/components/portfolio/projects-section"
 import { CertificationsSection } from "@/components/portfolio/certifications-section"
@@ -18,6 +19,7 @@ export default function Home() {
         <NavHeader />
         <main>
           <HeroSection />
+          <SkillsSection />
           <ExperienceSection />
           <ProjectsSection />
           <CertificationsSection />

@@ -6,13 +6,19 @@ const achievements = [
     icon: Trophy,
     title: "National Rank 21 in Java Quiz",
     description:
-      "Secured All-India Rank 21 in a competitive Java programming quiz among 2,000+ participants nationwide.",
+      "Secured All-India Rank 21 in a competitive Java programming quiz among 2,000+ participants nationwide (August 2025).",
   },
   {
     icon: Star,
+    title: "Smart India Hackathon 2025 Finalist",
+    description:
+      "Top 15 finalist team to qualify internal hackathon of Smart India Hackathon 2025 (August 2025).",
+  },
+  {
+    icon: Trophy,
     title: "Letter of Appreciation - Defence Minister of India",
     description:
-      "Received a letter of appreciation from the Defence Minister of India.",
+      "Received a letter of appreciation from Mr. Rajnath Singh (Defense Minister of India) for exceptional performance in ISC examinations (August 2023).",
   },
 ]
 
