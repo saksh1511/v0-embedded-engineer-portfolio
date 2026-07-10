@@ -18,7 +18,7 @@ const achievements = [
     icon: Zap,
     title: "Xpecto 2025 – IIT Mandi National-Level Robotics Competition",
     description:
-      "Participated in Robo Soccer and Robo Sumo competitions at Xpecto 2025, IIT Mandi, demonstrating advanced robotics design, embedded systems integration, and effective teamwork skills.",
+      "Participated in Line Following Robot (LFR), Robo Soccer, and Robo Sumo competitions at Xpecto 2025, IIT Mandi, demonstrating advanced robotics design, embedded systems integration, sensor interfacing, and effective teamwork skills.",
   },
   {
     icon: Zap,

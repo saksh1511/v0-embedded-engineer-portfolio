@@ -13,13 +13,13 @@ const skillCategories: SkillCategory[] = [
     title: "Programming Languages",
     icon: Code2,
     description: "Embedded & systems programming",
-    skills: ["C++", "C", "Java", "Embedded C", "MicroPython", "Assembly", "Verilog"],
+    skills: ["C++", "C", "Java", "Embedded C", "MicroPython", "Verilog"],
   },
   {
     title: "Microcontrollers & Boards",
     icon: Cpu,
     description: "Hardware platforms for embedded systems",
-    skills: ["STM32", "ESP32", "Arduino", "ARM Cortex-M", "RISC-V"],
+    skills: ["STM32", "ESP32", "Arduino", "ARM Cortex-M"],
   },
   {
     title: "Design & Simulation Tools",

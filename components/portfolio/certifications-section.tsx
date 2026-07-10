@@ -21,7 +21,7 @@ const certifications: Certification[] = [
   {
     name: "NextGen Networking: Summer Internship in Advanced Computer Networks",
     issuer: "Lovely Professional University - Centre for Professional Enhancement",
-    file: "/certificates/nextgen-networking-lpu.png",
+    file: "/certificates/computer-networking-intern-lpu.png",
     type: "image",
   },
   {

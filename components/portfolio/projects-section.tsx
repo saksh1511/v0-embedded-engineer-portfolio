@@ -42,15 +42,16 @@ const projects: Project[] = [
     ],
     techStack: ["IoT Devices", "ESP32", "RFID", "Wireless Communication", "Real time monitoring"],
   },
+
   {
-    title: "Lost and Found Tracking System (GPS + RFID + IoT)",
+    title: "Hybrid Renewable Smart Street Lighting System",
     summary:
-      "IoT-based system for real-time location tracking of individuals in large or remote areas using GPS and RFID.",
+      "Developed a self-powered smart street lighting system combining solar, wind, and piezoelectric energy harvesting with intelligent lighting control to improve energy efficiency and sustainability.",
     highlights: [
-      "Enabled real-time location tracking of individuals in large or remote areas",
-      "Achieved efficient monitoring and recovery using wearable devices and checkpoints",
+      "Integrated LDR-based automatic switching and motion-triggered LED brightness control using RCWL-0516 radar sensor",
+      "Designed an embedded energy management system for renewable energy integration, battery charging, and real-time LED control, reducing dependence on conventional power sources",
     ],
-    techStack: ["IoT Devices", "GPS", "RFID", "Wireless Communication"],
+    techStack: ["ESP32", "Embedded C", "Solar Panel", "Wind Turbine", "Piezoelectric Sensors", "LDR", "RCWL-0516", "TP4056", "MT3608", "PWM"],
   },
   {
     title: "Secure Chat Application Using TCP & AES Encryption",
