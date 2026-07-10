@@ -28,27 +28,13 @@ export function HeroSection() {
           </p>
           <div className="mt-4 max-w-xl space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>
-              As a proactive and detail-oriented Electronics and Communication
-              Engineering student at Lovely Professional University, I am
-              passionate about the intersection of hardware and software. My
-              academic foundation is built on core ECE principles including
-              Embedded System, Analog Circuits, and Computer Networking.
+              I&apos;m an Electronics and Communication Engineering undergraduate at Lovely Professional University with a deep passion for embedded systems, firmware development, and IoT applications. I thrive at the intersection of hardware and software, designing intelligent embedded solutions that solve real-world engineering challenges through innovative, reliable, and efficient technology.
             </p>
             <p>
-              I am proficient in C, C++, Java, Python, Embedded C, Assembly,
-              MicroPython, and Verilog, with hands-on experience in
-              microcontroller programming and system-level development. I have
-              worked extensively with tools and platforms such as Proteus,
-              MATLAB, Keil, PSpice, Cisco Packet Tracer, Creo, and Fusion for
-              simulation, design, and testing.
+              With hands-on expertise in STM32, ESP32, Arduino, and FreeRTOS, I specialize in developing real-time embedded systems, sensor interfacing, communication protocols, and IoT applications. I&apos;m proficient in C, C++, Java, Embedded C, MicroPython, and Verilog, leveraging advanced tools like Proteus, STM32CubeIDE, MATLAB, Keil, PSpice, and CAD software for both design and validation.
             </p>
             <p>
-              Beyond academics, I actively explore real-world engineering
-              applications through practical projects in IoT, secure
-              communication, and embedded system design. I bring strong
-              problem-solving ability, critical thinking, leadership,
-              adaptability, and project management skills to multidisciplinary
-              engineering challenges.
+              I excel at translating complex engineering concepts into practical applications, combining strong problem-solving abilities with critical thinking and technical depth. My projects demonstrate expertise in hardware-software co-design, embedded systems architecture, and end-to-end solution development. Continuously expanding my technical expertise, I&apos;m committed to pushing the boundaries of what embedded systems can achieve.
             </p>
           </div>
         </div>
