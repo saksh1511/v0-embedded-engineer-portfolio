@@ -28,13 +28,13 @@ export function HeroSection() {
           </p>
           <div className="mt-4 max-w-xl space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>
-              I&apos;m an Electronics and Communication Engineering undergraduate at Lovely Professional University with a deep passion for embedded systems, firmware development, and IoT applications. I thrive at the intersection of hardware and software, designing intelligent embedded solutions that solve real-world engineering challenges through innovative, reliable, and efficient technology.
+              I&apos;m an Electronics and Communication Engineering undergraduate at Lovely Professional University with a strong interest in embedded systems, firmware development, and IoT solutions. I enjoy designing intelligent embedded systems by combining hardware and software engineering, with extensive hands-on experience in STM32, ESP32, Arduino, and FreeRTOS-based real-time systems.
             </p>
             <p>
-              With hands-on expertise in STM32, ESP32, Arduino, and FreeRTOS, I specialize in developing real-time embedded systems, sensor interfacing, communication protocols, and IoT applications. I&apos;m proficient in C, C++, Java, Embedded C, MicroPython, and Verilog, leveraging advanced tools like Proteus, STM32CubeIDE, MATLAB, Keil, PSpice, and CAD software for both design and validation.
+              Proficient in C, C++, Java, Embedded C, Python, and MicroPython, I have developed diverse projects involving real-time embedded systems, sensor interfacing, communication protocols, wireless IoT applications, and robotics. I leverage advanced design and simulation tools including Proteus, STM32CubeIDE, MATLAB, Keil, PSpice, and CAD software for comprehensive system validation and prototyping.
             </p>
             <p>
-              I excel at translating complex engineering concepts into practical applications, combining strong problem-solving abilities with critical thinking and technical depth. My projects demonstrate expertise in hardware-software co-design, embedded systems architecture, and end-to-end solution development. Continuously expanding my technical expertise, I&apos;m committed to pushing the boundaries of what embedded systems can achieve.
+              I am passionate about solving real-world engineering challenges through innovative, reliable, and efficient technology solutions. My approach combines strong problem-solving and critical thinking with hands-on technical expertise in hardware-software co-design and embedded systems architecture. Continuously expanding my technical depth, I&apos;m committed to developing next-generation embedded solutions that drive technological innovation.
             </p>
           </div>
         </div>

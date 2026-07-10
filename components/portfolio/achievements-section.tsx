@@ -1,5 +1,5 @@
 import { SectionHeader } from "./section-header"
-import { Trophy, Star } from "lucide-react"
+import { Trophy, Star, Zap } from "lucide-react"
 
 const achievements = [
   {
@@ -13,6 +13,18 @@ const achievements = [
     title: "Smart India Hackathon 2025 Finalist",
     description:
       "Top 15 finalist team to qualify internal hackathon of Smart India Hackathon 2025 (August 2025).",
+  },
+  {
+    icon: Zap,
+    title: "Xpecto 2025 – IIT Mandi National-Level Robotics Competition",
+    description:
+      "Participated in Robo Soccer and Robo Sumo competitions at Xpecto 2025, IIT Mandi, demonstrating advanced robotics design, embedded systems integration, and effective teamwork skills.",
+  },
+  {
+    icon: Zap,
+    title: "Utkansh 2025 – NIT Jalandhar National-Level Robotics Competition",
+    description:
+      "Competed in Robo Soccer and Robo Sumo events at Utkansh 2025, NIT Jalandhar, applying real-time embedded systems, robotics engineering, and problem-solving skills in a competitive environment.",
   },
   {
     icon: Trophy,
