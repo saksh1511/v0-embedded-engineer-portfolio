@@ -1,11 +1,13 @@
 import { SectionHeader } from "./section-header"
-import { Zap } from "lucide-react"
+import { Zap, Github } from "lucide-react"
+import Link from "next/link"
 
 interface Project {
   title: string
   summary: string
   highlights: string[]
   techStack: string[]
+  github?: string
 }
 
 const projects: Project[] = [
@@ -28,6 +30,7 @@ const projects: Project[] = [
       "Created an embedded system for rider safety monitoring, detection and emergency response mechanism",
     ],
     techStack: ["ESP32", "MPU6050", "GSM Module (SIM800L)", "GPS Module (NEO-6M)", "Buzzer"],
+    github: "https://github.com/sharique-arshad/Smart-Vehicle-Accident-Detection-ESP32",
   },
   {
     title: "Tourist Tracking and Rescuing System",
@@ -135,6 +138,20 @@ export function ProjectsSection() {
                     ))}
                   </div>
                 </div>
+
+                {project.github && (
+                  <div className="mt-3 flex items-center gap-2">
+                    <Link
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+                    >
+                      <Github className="h-4 w-4" />
+                      View on GitHub
+                    </Link>
+                  </div>
+                )}
               </div>
             </article>
           ))}
