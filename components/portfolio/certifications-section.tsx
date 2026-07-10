@@ -30,12 +30,7 @@ const certifications: Certification[] = [
     file: "/certificates/dbms-nptel.png",
     type: "image",
   },
-  {
-    name: "Computer Networking",
-    issuer: "Centre of Professional Enhancement",
-    file: "/certificates/computer-networking-cpe.pdf",
-    type: "pdf",
-  },
+
   {
     name: "Embedded System and Robotics IoT",
     issuer: "IIT Mandi",

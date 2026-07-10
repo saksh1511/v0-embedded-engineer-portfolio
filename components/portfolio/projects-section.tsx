@@ -1,4 +1,5 @@
 import { SectionHeader } from "./section-header"
+import { Zap } from "lucide-react"
 
 interface Project {
   title: string
@@ -86,43 +87,53 @@ export function ProjectsSection() {
         />
 
         <div className="flex flex-col gap-6">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <article
               key={project.title}
-              className="rounded-lg border border-border bg-card p-6"
+              className="group relative rounded-lg border border-border bg-gradient-to-br from-card to-card/80 p-6 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
             >
-              <h3 className="text-base font-semibold text-foreground">
-                {project.title}
-              </h3>
-              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
-                {project.summary}
-              </p>
+              {/* Decorative accent */}
+              <div className="absolute right-6 top-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Zap className="h-8 w-8 text-primary" />
+              </div>
 
-              <ul className="mt-4 flex flex-col gap-2">
-                {project.highlights.map((highlight) => (
-                  <li
-                    key={highlight}
-                    className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed"
-                  >
-                    <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-primary" />
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
+              <div className="relative z-10">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
+                  <h3 className="text-base font-semibold text-foreground">
+                    {project.title}
+                  </h3>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  {project.summary}
+                </p>
 
-              <div className="mt-4 border-t border-border pt-3">
-                <h4 className="mb-2 text-xs font-semibold tracking-wider text-foreground/70 uppercase">
-                  Tech Stack
-                </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-md border border-border bg-secondary px-2.5 py-0.5 text-xs text-secondary-foreground"
+                <ul className="mt-4 flex flex-col gap-2">
+                  {project.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed"
                     >
-                      {tech}
-                    </span>
+                      <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-primary/60" />
+                      {highlight}
+                    </li>
                   ))}
+                </ul>
+
+                <div className="mt-4 border-t border-border/50 pt-3">
+                  <h4 className="mb-2 text-xs font-semibold tracking-wider text-foreground/70 uppercase">
+                    Embedded Stack
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-md border border-primary/30 bg-primary/5 px-2.5 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </article>

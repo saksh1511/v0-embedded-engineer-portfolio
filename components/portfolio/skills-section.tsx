@@ -1,27 +1,49 @@
 import { SectionHeader } from "./section-header"
-import { Code2, Cpu, Wrench } from "lucide-react"
+import { Code2, Cpu, Wrench, Zap, Layers, Gauge } from "lucide-react"
 
 interface SkillCategory {
   title: string
   icon: React.ComponentType<{ className?: string }>
   skills: string[]
+  description: string
 }
 
 const skillCategories: SkillCategory[] = [
   {
-    title: "Languages",
+    title: "Programming Languages",
     icon: Code2,
-    skills: ["C++", "C", "Java", "Micro Python", "Embedded C"],
+    description: "Embedded & systems programming",
+    skills: ["C++", "C", "Java", "Embedded C", "MicroPython", "Assembly", "Verilog"],
   },
   {
-    title: "Boards & Platforms",
+    title: "Microcontrollers & Boards",
     icon: Cpu,
-    skills: ["STM32", "ESP32", "Arduino", "Proteus", "STM32CubeIDE", "MATLAB", "Arduino IDE", "Cisco Packet Tracer", "VS Code"],
+    description: "Hardware platforms for embedded systems",
+    skills: ["STM32", "ESP32", "Arduino", "ARM Cortex-M", "RISC-V"],
   },
   {
-    title: "Soft Skills",
+    title: "Design & Simulation Tools",
+    icon: Layers,
+    description: "CAD and electronics simulation",
+    skills: ["Proteus", "STM32CubeIDE", "Keil", "MATLAB", "PSpice", "Creo", "Fusion 360"],
+  },
+  {
+    title: "Embedded Systems & IoT",
+    icon: Zap,
+    description: "Real-time and wireless systems",
+    skills: ["Real-Time OS", "Free RTOS", "Sensor Integration", "Wireless Communication", "UART/SPI/I2C"],
+  },
+  {
+    title: "Network & Communication",
+    icon: Gauge,
+    description: "Protocols and networking",
+    skills: ["TCP/IP", "Cisco Packet Tracer", "Routing", "VLAN", "Wireless Networks"],
+  },
+  {
+    title: "Professional Skills",
     icon: Wrench,
-    skills: ["Problem-Solving", "Leadership", "Project Management", "Adaptability", "Critical Thinking"],
+    description: "Engineering mindset & teamwork",
+    skills: ["Problem-Solving", "Leadership", "Critical Thinking", "Project Management", "Adaptability"],
   },
 ]
 
@@ -34,27 +56,34 @@ export function SkillsSection() {
           subtitle="Technical expertise and tools"
         />
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2">
           {skillCategories.map((category) => {
             const Icon = category.icon
             return (
               <div
                 key={category.title}
-                className="rounded-lg border border-border bg-card p-5"
+                className="group rounded-lg border border-border bg-gradient-to-br from-card to-card/80 p-5 transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/10"
               >
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
-                    <Icon className="h-4 w-4" />
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 text-primary group-hover:shadow-lg group-hover:shadow-primary/30 transition-all">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold text-foreground">
+                        {category.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        {category.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-sm font-semibold text-foreground">
-                    {category.title}
-                  </h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 mt-3">
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="inline-block rounded-md border border-border bg-secondary/50 px-2.5 py-1 text-xs text-secondary-foreground"
+                      className="inline-block rounded-md border border-primary/30 bg-primary/5 px-2.5 py-1 text-xs font-medium text-primary/90 hover:bg-primary/10 transition-colors"
                     >
                       {skill}
                     </span>
