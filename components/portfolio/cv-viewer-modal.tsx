@@ -1,7 +1,8 @@
 "use client"
 
-import { X, Download } from "lucide-react"
-import { useEffect } from "react"
+import { X, Download, FileText, Eye } from "lucide-react"
+import { useEffect, useState } from "react"
+import { CVContent } from "./cv-content"
 
 interface CVViewerModalProps {
   isOpen: boolean
@@ -10,6 +11,8 @@ interface CVViewerModalProps {
 }
 
 export function CVViewerModal({ isOpen, onClose, cvUrl }: CVViewerModalProps) {
+  const [viewMode, setViewMode] = useState<"formatted" | "pdf">("formatted")
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
@@ -47,7 +50,7 @@ export function CVViewerModal({ isOpen, onClose, cvUrl }: CVViewerModalProps) {
             <div className="flex items-center gap-3">
               <a
                 href={cvUrl}
-                download="SakshiSharmaCV.pdf"
+                download="SakshiSharmaCV.docx"
                 className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 <Download className="h-4 w-4" />
@@ -63,13 +66,45 @@ export function CVViewerModal({ isOpen, onClose, cvUrl }: CVViewerModalProps) {
             </div>
           </div>
 
-          {/* PDF Viewer */}
+          {/* View Mode Tabs */}
+          <div className="flex border-b border-border bg-secondary/50 px-6">
+            <button
+              onClick={() => setViewMode("formatted")}
+              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors ${
+                viewMode === "formatted"
+                  ? "border-b-2 border-primary text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <Eye className="h-4 w-4" />
+              Formatted View
+            </button>
+            <button
+              onClick={() => setViewMode("pdf")}
+              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors ${
+                viewMode === "pdf"
+                  ? "border-b-2 border-primary text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <FileText className="h-4 w-4" />
+              PDF View
+            </button>
+          </div>
+
+          {/* Content */}
           <div className="flex-1 overflow-hidden">
-            <iframe
-              src={`${cvUrl}#toolbar=1&navpanes=0&scrollbar=1`}
-              className="h-full w-full border-0"
-              title="CV Viewer"
-            />
+            {viewMode === "formatted" ? (
+              <div className="h-full overflow-y-auto">
+                <CVContent />
+              </div>
+            ) : (
+              <iframe
+                src={`${cvUrl}#toolbar=1&navpanes=0&scrollbar=1`}
+                className="h-full w-full border-0"
+                title="CV PDF Viewer"
+              />
+            )}
           </div>
         </div>
       </div>
