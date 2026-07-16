@@ -41,7 +41,7 @@ export function CVViewerModal({ isOpen, onClose, cvUrl }: CVViewerModalProps) {
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="relative h-[90vh] w-full max-w-4xl rounded-lg border border-border bg-background shadow-2xl flex flex-col">
+        <div className="relative w-full max-w-5xl rounded-lg border border-border bg-background shadow-2xl flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-border px-6 py-4">
             <h2 className="text-lg font-semibold text-foreground">
@@ -93,15 +93,15 @@ export function CVViewerModal({ isOpen, onClose, cvUrl }: CVViewerModalProps) {
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-hidden">
+          <div className="overflow-hidden">
             {viewMode === "formatted" ? (
-              <div className="h-full overflow-y-auto">
+              <div className="max-h-[calc(100vh-200px)]">
                 <CVContent />
               </div>
             ) : (
               <iframe
                 src={`${cvUrl}#toolbar=1&navpanes=0&scrollbar=1`}
-                className="h-full w-full border-0"
+                className="w-full h-96 border-0"
                 title="CV PDF Viewer"
               />
             )}
