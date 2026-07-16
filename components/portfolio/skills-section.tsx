@@ -31,13 +31,19 @@ const skillCategories: SkillCategory[] = [
     title: "Embedded Systems & IoT",
     icon: Zap,
     description: "Real-time and wireless systems",
-    skills: ["Real-Time OS", "Free RTOS", "Sensor Integration", "Wireless Communication", "UART/SPI/I2C"],
+    skills: ["Real-Time OS", "Free RTOS", "Sensor Integration", "Wireless Communication", "Interrupts", "Timers", "ADC"],
   },
   {
-    title: "Network & Communication",
+    title: "Communication Protocols",
     icon: Gauge,
-    description: "Protocols and networking",
-    skills: ["TCP/IP", "Cisco Packet Tracer", "Routing", "VLAN", "Wireless Networks"],
+    description: "Hardware and networking protocols",
+    skills: ["UART", "I2C", "SPI", "TCP/IP", "PWM", "FreeRTOS", "Cisco Packet Tracer"],
+  },
+  {
+    title: "Network & Security",
+    icon: Gauge,
+    description: "Networking and infrastructure",
+    skills: ["Routing", "VLAN", "Network Troubleshooting", "Packet Analysis", "Wireless Networks"],
   },
   {
     title: "Professional Skills",

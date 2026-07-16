@@ -2,9 +2,9 @@ import { SectionHeader } from "./section-header"
 import { Briefcase } from "lucide-react"
 
 const responsibilities = [
-  "Configured, tested, and optimized next-generation networking solutions including routing and switching",
-  "Analyzed TCP/IP communication and network security concepts",
-  "Assisted in deploying network automation tools and monitoring systems for improved performance",
+  "Configured and tested routing, switching, VLANs, and TCP/IP-based networking solutions using Cisco Packet Tracer",
+  "Performed network troubleshooting, packet analysis, and connectivity testing to improve network performance",
+  "Worked on network automation concepts and monitored communication using standard networking protocols",
 ]
 
 export function ExperienceSection() {
@@ -51,7 +51,7 @@ export function ExperienceSection() {
                   Tech Stack
                 </h4>
                 <div className="mt-2 flex flex-wrap gap-1.5">
-                  {["Cisco Packet Tracer", "TCP/IP", "Routing & Switching", "VLANs"].map((tech) => (
+                  {["Cisco Packet Tracer", "TCP/IP", "Routing", "Switching Protocols", "VLANs"].map((tech) => (
                     <span
                       key={tech}
                       className="rounded-md border border-border bg-primary/10 px-2.5 py-1 text-xs text-primary"
